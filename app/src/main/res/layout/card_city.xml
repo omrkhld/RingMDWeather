@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    card_view:cardElevation="10dp"
+    android:id="@+id/card_view">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:minHeight="100dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/city_name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFF"
+            android:text="Singapore"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@+id/city_name"
+            android:id="@+id/date_time"
+            android:textSize="20sp"
+            android:textColor="#FFF"
+            android:text="January 7, 00:00"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/city_name"
+            android:id="@+id/temperature"
+            android:textSize="70sp"
+            android:textColor="#FFF"
+            android:text="27"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/city_name"
+            android:layout_toRightOf="@+id/temperature"
+            android:id="@+id/degreeCelsius_symbol"
+            android:textSize="45sp"
+            android:textColor="#FFF"
+            android:text="&#x2103;"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/temperature"
+            android:id="@+id/feels_like"
+            android:textSize="20sp"
+            android:textColor="#FFF"
+            android:text="Feels like 20"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@+id/feels_like"
+            android:layout_below="@+id/temperature"
+            android:id="@+id/degree_symbol"
+            android:textSize="20sp"
+            android:textColor="#FFF"
+            android:text="&#176;"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/date_time"
+            android:layout_toRightOf="@+id/degree_symbol"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/weather_img"
+                android:minHeight="80dp"
+                android:minWidth="80dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@+id/weather_img"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/weather"
+                android:textSize="20sp"
+                android:textColor="#FFF"
+                android:text="Cloudy"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
