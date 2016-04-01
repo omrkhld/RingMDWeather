@@ -20,6 +20,7 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Omar on 29/3/2016.
+ * This adapter determines the layout of the card for each city.
  */
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
     private HashMap<String, CardInfo> cardList;

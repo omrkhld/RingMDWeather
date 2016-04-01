@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                     noInternetBar.setAction("RETRY", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            mSwipeRefresh.setRefreshing(true);
+                            task = new UpdateWeather().execute(cities);
                         }
                     });
                     noInternetBar.show();
@@ -72,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Start the refresh animation on first run
         if (hasConnection()) {
             mSwipeRefresh.post(new Runnable() {
                 @Override
@@ -102,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     mSwipeRefresh.setRefreshing(true);
+                    task = new UpdateWeather().execute(cities);
                 }
             });
             noInternetBar.show();
@@ -143,8 +147,10 @@ public class MainActivity extends AppCompatActivity {
             String imgUrl = "";
             Bitmap img = null;
 
+            //Iterates through all the 30 hardcoded cities.
             for (int i = 0; i < cities.length; i++) {
                 try {
+                    //parameters for the API call
                     params.put("key", keyAPI);
                     params.put("q", arg[0][i]);
                     params.put("format", "json");
@@ -155,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject json = parser.makeHttpRequest(baseURL, "GET", params);
 
                     try {
+                        //Read the json data returned by the GET request
                         json = json.getJSONObject("data");
                         cityName = json.getJSONArray("request").getJSONObject(0).getString("query").replace("\"", "");
                         String[] cityNameSplit = cityName.split(",");
@@ -178,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 try {
+                    //Get the weather image from the URL in the JSON data
                     img = BitmapFactory.decodeStream((InputStream) new URL(imgUrl).getContent());
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -199,11 +207,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private CardInfo initCard(String cn, String dt, String t, String fl, String w, Bitmap img) {
+        //Create a new card with the information provided
         CardInfo card = new CardInfo(cn, dt, t, fl, w, img);
         return card;
     }
 
     private CardAdapter updateAdapter(HashMap<String, CardInfo> cards) {
+        //Updates adapter for the recycler view with the new hashmap data
         if (cards != null) {
             ca = new CardAdapter(cards);
         }
